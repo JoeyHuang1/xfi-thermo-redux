@@ -1,34 +1,22 @@
 import React from 'react';
 import ThermoSlider from './ThermoSlider.js'
 import PropTypes from 'prop-types';
-import thermoService from './thermoService.js'
 import { connect } from 'react-redux'
 
 
-class Thermo extends React.Component {
-  handleChange = async (value)=>{
-    let newVal=this.state.temperature
-    try {
-      newVal = await thermoService(this.props.seedId, value)?value:newVal
-    } catch(e) {
-      console.log(new Error(e))
-    }
-  }
-  
-  render() {
-    const thermoTitleStyle={width:'30%', 'maxWidth':'300px', 'minWidth':'100px', display:'inline-block'}
-    return (
-      <div>
-        <p/>
-        <div style={thermoTitleStyle}>
-          <span>Thermostat {this.props.name}:</span>
-          <span className={this.props.tempeClass}> {this.props.temperature} </span>
-        </div>
-        <ThermoSlider seedId={this.props.seedId}
-        />
+function Thermo (props){
+  const thermoTitleStyle={width:'30%', 'maxWidth':'300px', 'minWidth':'100px', display:'inline-block'}
+  return (
+    <div>
+      <p/>
+      <div style={thermoTitleStyle}>
+        <span>Thermostat {props.name}:</span>
+        <span className={props.tempeClass}> {props.temperature} </span>
       </div>
-    );
-  }
+      <ThermoSlider seedId={props.seedId}
+      />
+    </div>
+  );
 }
 
 Thermo.propTypes = {

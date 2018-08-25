@@ -1,6 +1,5 @@
 import update from 'react-addons-update';
 import thermoService from '../thermoService.js'
-import {setTempeDoneAction} from '../actions'
 import { loop, Cmd } from 'redux-loop';
 
 const thermoListReducer = function(state, action) {
