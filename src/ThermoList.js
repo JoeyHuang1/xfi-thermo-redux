@@ -24,7 +24,7 @@ class ThermoList extends React.Component {
     this.setState({accountClass:'blinkClass'})
     let thermoList=[]
     try {
-      thermoList = await thermoListService() 
+      thermoList = await thermoListService(this.props.accessToken) 
 
       if (thermoList!=={}) 
         this.setState({ errMsg:'', accountClass:''})
@@ -59,10 +59,12 @@ class ThermoList extends React.Component {
 }
 
 ThermoList.propTypes = {
-  account: PropTypes.string.isRequired
+  account: PropTypes.string.isRequired,
+  gotThermos:PropTypes.func.isRequired
 };
 
 const mapStateToProps = function(state) {
+  console.log(state)
   return {...state.loginReducer, ...state.thermoListReducer};
 }
 

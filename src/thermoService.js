@@ -1,12 +1,11 @@
-import Cookies from "js-cookie"
 import ComcastConst from './ComcastConst.js'
 
 
-async function setThermo (seedId, value){
-    let accessCookie = Cookies.get('accessToken')
+async function setThermo (accessToken, seedId, value){
     let myInit = { method: 'PUT',
       body:JSON.stringify({attribSet:[{temperature:value}]}),
-      headers: {...ComcastConst.comcast_headers, 'Authorization': 'Bearer '+accessCookie}}
+      headers: {...ComcastConst.comcast_headers, 
+        'Authorization': 'Bearer '+accessToken}}
     let updateURL = ComcastConst.seedsURL+'/'+seedId+'/controls'
 
     let good = false

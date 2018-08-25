@@ -24,7 +24,8 @@ const thermoListReducer = function(state, action) {
     return loop(
       newState,
       Cmd.run(async ()=>{
-          await thermoService(action.seed.seedId, action.seed.temperature)
+          await thermoService(action.seed.accessToken, 
+            action.seed.seedId, action.seed.temperature)
         }, 
         {
           successActionCreator: ()=>{

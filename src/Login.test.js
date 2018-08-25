@@ -10,6 +10,7 @@ import Login from './Login.js'
 
 describe("Login", () => {
   it("should encode login post", () => {
+    /* moved to loginService.test.js
     let id='bob@bob.com'
     let pwd='hunter42'
     let post="{\"emailAddress\":\"bob@bob.com\",\"password\":\"LsRLB8LE3kQYWiTE7m83v+waSzoDdcJIGrc3nQhtD4M=\"}"
@@ -19,6 +20,7 @@ describe("Login", () => {
     const wrapper = shallow(<Login onSubmit={submit}/>);
     expect(wrapper.instance().getLoginPostData(id, pwd)).toEqual(post)
     expect(wrapper.instance().getLoginPostData(id1, pwd)).not.toEqual(post)
+    */
   });
 });
 

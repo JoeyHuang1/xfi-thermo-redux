@@ -30,7 +30,7 @@ class Login extends React.Component {
 
       if (respObj.access_token) {
         this.setState({errMsg: '', loginClass:''})
-        this.props.onSubmit(respObj.access_token, respObj.fullName)
+        this.props.afterLogin(respObj.access_token, respObj.fullName)
       }
       else {
         this.setState({errMsg: loginErrMsg, loginClass:''})
@@ -64,12 +64,12 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  afterLogin: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
-    onSubmit: (accessToken, account)=> {
+    afterLogin: (accessToken, account)=> {
       dispatch(loginAction({accessToken, account}));
     }
   }

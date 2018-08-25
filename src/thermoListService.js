@@ -1,4 +1,3 @@
-import Cookies from "js-cookie"
 import ComcastConst from './ComcastConst.js'
 
 function filterThermo(devices){
@@ -19,16 +18,16 @@ function filterThermo(devices){
     return thermoList
   }
 
-  async function getThermoList(){
-    let accessCookie = Cookies.get(ComcastConst.accessCookie)
+  async function getThermoList(accessToken){
     let myInit = { method: 'GET',
-      headers: {...ComcastConst.comcast_headers, 'Authorization': 'Bearer '+accessCookie} };
+      headers: {...ComcastConst.comcast_headers, 
+        'Authorization': 'Bearer '+accessToken} };
     
-    let thermoList = []
+    let thermoList = {}
     try {
       let response = await fetch(ComcastConst.seedsURL,myInit);
       let respObj = response.status===200? await response.json():{}
-      thermoList = respObj? filterThermo(respObj.seeds): []
+      thermoList = respObj? filterThermo(respObj.seeds): thermoList
 
     } catch(e) {
       console.log(new Error(e))

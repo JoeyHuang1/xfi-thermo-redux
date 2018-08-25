@@ -31,7 +31,8 @@ class ThermoSlider extends React.Component {
   }
   
   onAfterChange = (value) => {
-    this.props.setTempe({'seedId':this.props.seedId, 'temperature':value})
+    this.props.setTempe({accessToken:this.props.accessToken,
+      'seedId':this.props.seedId, 'temperature':value})
   }
 
   render() {
