@@ -1,6 +1,6 @@
 export const loginAction=(user)=>({type:'LOGIN', 'user':user})
 
-export const getSeedsAction=(seeds)=>({type:'GET_SEEDS', 'seeds':seeds})
+export const gotSeedsAction=(seeds)=>({type:'GOT_SEEDS', 'seeds':seeds})
 
 export const setTempeAction=(seed)=>({type:'SET_TEMPE', seed})
 

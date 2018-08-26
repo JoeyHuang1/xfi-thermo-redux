@@ -2,7 +2,7 @@ import React from 'react';
 import Thermo from './Thermo.js'
 import PropTypes from 'prop-types';
 import thermoListService from './thermoListService.js'
-import {getSeedsAction} from './actions'
+import {gotSeedsAction} from './actions'
 import { connect } from 'react-redux'
 
 const noDevErrMsg='No thermostat found.'
@@ -64,15 +64,12 @@ ThermoList.propTypes = {
 };
 
 const mapStateToProps = function(state) {
-  console.log(state)
   return {...state.loginReducer, ...state.thermoListReducer};
 }
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
-    gotThermos: (seeds)=> {
-      dispatch(getSeedsAction(seeds));
-    }
+    gotThermos: (seeds)=> {dispatch(gotSeedsAction(seeds))},
   }
 }
 export default connect(
