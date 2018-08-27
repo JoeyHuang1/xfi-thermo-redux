@@ -7,6 +7,7 @@ npm install
 npm start
 
 To run unit tests,
+
 npm test (or npm test src/*.test.js)
 
 
