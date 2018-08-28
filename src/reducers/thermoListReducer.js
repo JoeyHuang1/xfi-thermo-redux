@@ -1,41 +1,4 @@
 import update from 'react-addons-update';
-import thermoService from '../thermoService.js'
-import { loop, Cmd } from 'redux-loop';
-
-function setTempe(state, action){
-  let seedIdAttr =action.seed.seedId
-  let oldTempe=state.thermos[seedIdAttr].temperature, 
-    newTempe=action.seed.temperature
-  let newVal={'thermos':{}}
-  newVal.thermos[seedIdAttr]={'temperature':{$set: action.seed.temperature},
-      isChanging:{$set: true}
-  }
-  let newState=update(state, newVal);
-
-  return loop(
-    newState,
-    Cmd.run(async ()=>{
-        await thermoService(action.seed.accessToken, 
-          action.seed.seedId, action.seed.temperature)
-      }, 
-      {
-        successActionCreator: ()=>{
-          console.log('set tempe ok')
-          return {
-            type: 'SET_TEMPE_DONE',
-            seed: {seedId:action.seed.seedId, 'temperature': newTempe}
-          }
-        },
-        failActionCreator: ()=>{
-          console.log('set tempe fail')
-          return {
-            type: 'SET_TEMPE_DONE',
-            seed:{seedId:action.seed.seedId, 'temperature': oldTempe}
-          }
-        },
-    })
-  );
-}
 
 const thermoListReducer = function(state, action) {
   let newState=state
@@ -46,16 +9,11 @@ const thermoListReducer = function(state, action) {
     newState={...state, 'thermos':action.seeds};
   }
 
-  if (action.type === 'SET_TEMPE') {
-    newState = setTempe(state, action)
-  }
 
   if ('SET_TEMPE_DONE'===action.type){
     let seedIdAttr =action.seed.seedId
     let newVal={'thermos':{}}
-    newVal.thermos[seedIdAttr]={'temperature':{$set: action.seed.temperature},
-        isChanging:{$set: false}
-    }
+    newVal.thermos[seedIdAttr]={'temperature':{$set: action.seed.temperature}}
     newState=update(state, newVal);
   }
 

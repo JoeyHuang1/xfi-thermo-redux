@@ -20,11 +20,12 @@ import ComcastConst from './ComcastConst.js'
     try {
       let response = await fetch(ComcastConst.loginURL,myInit);
       respObj = response.status===200? await response.json():{}
-
+      if (respObj.access_token)
+        return Promise.resolve(respObj)
     } catch(e) {
       console.log(new Error(e))
     }
-    return respObj
+    return Promise.reject()
   }
   
   export default goLogin
