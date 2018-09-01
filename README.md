@@ -27,5 +27,3 @@ Pre-requisites:
 
 
 
-Note:
-Did not add responsive layout. Please reference https://github.com/JoeyHuangOne/xfi-thermo-redux for the responsive layout implementation.
