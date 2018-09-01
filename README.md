@@ -25,3 +25,7 @@ Pre-requisites:
 * Download the [Nest Home Simulator](https://developers.nest.com/documentation/cloud/home-simulator) and add a Thermostat
 * Add Nest to your Stringify account in the Stringify app
 
+
+
+Note:
+Did not add responsive layout. Please reference https://github.com/JoeyHuangOne/xfi-thermo-redux for the responsive layout implementation.
