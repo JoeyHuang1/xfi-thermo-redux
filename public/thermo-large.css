@@ -1,0 +1,18 @@
+input {
+    width: 30%
+}
+
+.thermoTitle{
+    margin-right: 15px;
+}
+
+.thermoTitle, .thermoSlider{
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.thermoSlider{
+    width: 60px;
+    max-width:400px;
+    min-width:300px;
+}

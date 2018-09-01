@@ -10,7 +10,7 @@ async function setThermo (accessToken, seedId, value){
 
     try {
       let response = await fetch(updateURL,myInit);
-      if (response.status==200)
+      if (response.status===200)
         return Promise.resolve(response)
     } catch(e) {
       console.log(new Error(e))

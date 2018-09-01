@@ -33,8 +33,11 @@ class Login extends React.Component {
     } catch(e) {
       console.log(new Error(e))
       errMsg = loginErrMsg
+      // can't move this setState after catch.
+      // It will report warning in console log since 
+      // afterLogin() already unmount login component
+      this.setState({errMsg , loginClass:''}) 
     }
-    this.setState({errMsg , loginClass:''})
   }
   
   handleSubmit = (e)=>{

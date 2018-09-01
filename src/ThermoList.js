@@ -54,7 +54,7 @@ class ThermoList extends React.Component {
           <span className={this.state.accountClass}> {this.props.account} </span>
         </h1>
         <p>{this.state.errMsg}</p>
-        <ul>{this.listThermo()}</ul>
+        {this.listThermo()}
       </div>
     );
   }

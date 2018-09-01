@@ -8,10 +8,7 @@ import {setTempeDoneAction} from './actions'
 
 const minTempe=50
 const maxTempe=90
-const sliderStyle={display:'inline-block', width:'60%', minWidth:'200px', 
-          maxWidth:'600px'}
-const thermoTitleStyle={width:'30%', 'maxWidth':'300px', 'minWidth':'100px', 
-          display:'inline-block'}
+
   
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
@@ -31,7 +28,7 @@ class Thermo extends React.Component{
   onAfterChange = async (value) => {
     this.setState({tempeClass: 'blinkClass'})
     try {
-      let ret=await thermoService(this.props.accessToken, this.props.seedId, 
+      await thermoService(this.props.accessToken, this.props.seedId, 
             value)
       this.props.setTempe({'seedId':this.props.seedId, temperature:value})
     }catch(e){
@@ -42,14 +39,13 @@ class Thermo extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className='thermoContainer'>
         <p/>
-        <div style={thermoTitleStyle}>
+        <div className='thermoTitle' >
           <span>Thermostat {this.props.name}:</span>
           <span className={this.state.tempeClass}> {this.props.temperature} </span>
         </div>
-        <SliderWithTooltip value={this.state.sliderValue} 
-              style={sliderStyle}
+        <SliderWithTooltip className='thermoSlider' value={this.state.sliderValue} 
               min={minTempe} max={maxTempe}
               tipProps={{ overlayClassName: 'foo' }}
               trackStyle={[{ backgroundColor: 'red', height: 10 }]}
