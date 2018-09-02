@@ -1,17 +1,17 @@
-Comcast xfi thermo control in React/redux
+# Comcast xfi thermo control in React/redux
 
-To run the code Download the code, then
+## To run the code Download the code, then
 
 npm install
 
 npm start
 
-To run unit tests,
+## To run unit tests,
 
 npm test (or npm test src/*.test.js)
 
 
-Pre-requisites:
+### Pre-requisites:
 
 1. Login to a Stringify account by prompting someone for their email & password
 2. Discover the first Nest thermostat in their account
