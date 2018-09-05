@@ -45,7 +45,9 @@ class Thermo extends React.Component{
           <span>Thermostat {this.props.name}:</span>
           <span className={this.state.tempeClass}> {this.props.temperature} </span>
         </div>
-        <SliderWithTooltip className='thermoSlider' value={this.state.sliderValue} 
+        <SliderWithTooltip 
+              onContextMenu={()=>{e.stopPropagation(); return false}}
+              className='thermoSlider' value={this.state.sliderValue} 
               min={minTempe} max={maxTempe}
               tipProps={{ overlayClassName: 'foo' }}
               trackStyle={[{ backgroundColor: 'red', height: 10 }]}
