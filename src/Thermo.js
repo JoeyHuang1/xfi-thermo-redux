@@ -12,7 +12,7 @@ const maxTempe=90
   
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
-class Thermo extends React.Component{
+class Thermo extends React.PureComponent{
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,9 @@ class Thermo extends React.Component{
     this.setState({tempeClass: ''})
   }
 
+
   render(){
+    //console.log(this.props.name+' thermo render '+this.props.temperature)
     return (
       <div className='thermoContainer'>
         <p/>
@@ -46,7 +48,6 @@ class Thermo extends React.Component{
           <span className={this.state.tempeClass}> {this.props.temperature} </span>
         </div>
         <SliderWithTooltip 
-              onContextMenu={()=>{e.stopPropagation(); return false}}
               className='thermoSlider' value={this.state.sliderValue} 
               min={minTempe} max={maxTempe}
               tipProps={{ overlayClassName: 'foo' }}
@@ -68,6 +69,8 @@ const mapStateToProps = function(state, ownProps) {
   return {...state.loginReducer, 
       'temperature':
         state.thermoListReducer.thermos[ownProps.seedId].temperature,
+      'name':
+        state.thermoListReducer.thermos[ownProps.seedId].name,
     };
 }
 

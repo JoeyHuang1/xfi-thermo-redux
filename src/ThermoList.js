@@ -48,14 +48,16 @@ class ThermoList extends React.Component {
   }
 
   render() {
+    console.log('thermoList render')
+    let thermos=this.listThermo()
     return (
-      <div>
+      [
         <h1>Account 
           <span className={this.state.accountClass}> {this.props.account} </span>
-        </h1>
-        <p>{this.state.errMsg}</p>
-        {this.listThermo()}
-      </div>
+        </h1>,
+        <p>{this.state.errMsg}</p>,
+        thermos
+      ]
     );
   }
 }
